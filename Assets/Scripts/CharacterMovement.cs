@@ -1,9 +1,6 @@
 using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Windows;
 
 [RequireComponent(typeof(CharacterController))]
 public class CharacterMovement : MonoBehaviour
@@ -34,7 +31,21 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Vertical movement
+        HorizontalMovement();
+        VerticalMovement();
+
+        appliedVelocity = new Vector3(horizontalVelocity.x, verticalVelocity, horizontalVelocity.y);
+        characterController.Move(appliedVelocity * Time.deltaTime);
+    }
+
+    void HorizontalMovement()
+    {
+        Vector3 relativeDirection = Quaternion.AngleAxis(rotation.x, Vector3.up) * movementInput;
+        horizontalVelocity = new Vector2(relativeDirection.x, relativeDirection.z).normalized * moveSpeed;
+    }
+
+    void VerticalMovement()
+    {
         if (jumpQueued && characterController.isGrounded)
         {
             verticalVelocity = jumpPower;
@@ -44,13 +55,6 @@ public class CharacterMovement : MonoBehaviour
             jumpQueued = false;
             verticalVelocity = characterController.isGrounded ? -1 : verticalVelocity + gravity * Time.deltaTime;
         }
-
-        // Horizontal movement
-        Vector3 relativeDirection = Quaternion.AngleAxis(rotation.x, Vector3.up) * movementInput;
-        horizontalVelocity = new Vector2(relativeDirection.x, relativeDirection.z).normalized * moveSpeed;
-
-        appliedVelocity = new Vector3(horizontalVelocity.x, verticalVelocity, horizontalVelocity.y);
-        characterController.Move(appliedVelocity * Time.deltaTime);
     }
 
     public void OnMove(InputAction.CallbackContext ctx)
