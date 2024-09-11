@@ -1151,6 +1151,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5914784597646723418, guid: 548440fa8898abd46b0ddfab1eb6d22e,
         type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5914784597646723418, guid: 548440fa8898abd46b0ddfab1eb6d22e,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fc82ea913972b0840ac45e1862582631, type: 2}
@@ -1212,7 +1217,7 @@ PrefabInstance:
     - target: {fileID: 5003563274206716603, guid: 548440fa8898abd46b0ddfab1eb6d22e,
         type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6740984516714099051, guid: 548440fa8898abd46b0ddfab1eb6d22e,
         type: 3}
@@ -1655,7 +1660,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
