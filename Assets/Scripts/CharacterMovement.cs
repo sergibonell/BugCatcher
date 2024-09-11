@@ -82,7 +82,7 @@ public class CharacterMovement : MonoBehaviour
             rotation.x -= 360;
 
         rotation.y += input.y * verticalSensitivity * Time.deltaTime;
-        rotation.y = Mathf.Clamp(rotation.y, -45, 45);
+        rotation.y = Mathf.Clamp(rotation.y, -80, 80);
         Quaternion xQuat = Quaternion.AngleAxis(rotation.x, Vector3.up);
         Quaternion yQuat = Quaternion.AngleAxis(rotation.y, Vector3.left);
 
